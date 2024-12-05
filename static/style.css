@@ -1,0 +1,34 @@
+.card {
+    border-radius: 8px;
+}
+
+.table thead {
+    background-color: #f8f9fa;
+}
+
+.badge {
+    font-size: 0.9em;
+}
+.card {
+    border-radius: 8px;
+}
+
+.card-img-top {
+    border-bottom: 1px solid #ddd;
+}
+
+.card-title {
+    font-size: 1.25rem;
+}
+
+.text-muted {
+    font-size: 0.875rem;
+}
+.table img {
+    border: 1px solid #ddd;
+    padding: 4px;
+    background-color: #f8f9fa;
+}
+.table td {
+    vertical-align: middle;
+}

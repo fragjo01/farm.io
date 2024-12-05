@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Edit Item</h1>
+<form method="POST">
+    <input type="text" name="name" value="{{ item.name }}" required>
+    <input type="text" name="image" value="{{ item.image }}" required>
+    <textarea name="description" required>{{ item.description }}</textarea>
+    <input type="number" name="price" value="{{ item.price }}" step="0.01" required>
+    <label><input type="checkbox" name="available" {% if item.available %} checked {% endif %}> Available</label>
+    <button type="submit" class="btn btn-primary">Update Item</button>
+</form>
+{% endblock %}

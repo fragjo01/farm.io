@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% block title %}Admin Panel - Farm to Table{% endblock %}
+{% block content %}
+<div class="container">
+    <h1 class="mt-4">Admin Panel</h1>
+    <div class="card my-4">
+        <div class="card-header bg-success text-white">
+            <h2 class="h5 mb-0">Add New Item</h2>
+        </div>
+        <div class="card-body">
+            <form method="POST" class="row g-3">
+                <div class="col-md-6">
+                    <input type="text" name="name" class="form-control" placeholder="Name" required>
+                </div>
+                <div class="col-md-6">
+                    <input type="text" name="image" class="form-control" placeholder="Image URL" required>
+                </div>
+                <div class="col-md-12">
+                    <textarea name="description" class="form-control" placeholder="Description" rows="3" required></textarea>
+                </div>
+                <div class="col-md-4">
+                    <input type="number" name="price" class="form-control" step="0.01" placeholder="Price" required>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="available" id="availableCheck">
+                        <label class="form-check-label" for="availableCheck">Available</label>
+                    </div>
+                </div>
+                <div class="col-md-4 text-end">
+                    <button type="submit" class="btn btn-success w-100">Add Item</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <h2>Inventory</h2>
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover align-middle">
+            <thead class="table-light">
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Available</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in items %}
+                <tr>
+                    <td>{{ item.name }}</td>
+                    <td>${{ "%.2f" | format(item.price) }}</td>
+                    <td>
+                        <span class="badge {{ 'bg-success' if item.available else 'bg-secondary' }}">
+                            {{ "Yes" if item.available else "No" }}
+                        </span>
+                    </td>
+                    <td>
+                        <div class="d-flex">
+                            <a href="/edit/{{ item.id }}" class="btn btn-sm btn-primary me-2">Edit</a>
+                            <a href="/delete/{{ item.id }}" class="btn btn-sm btn-danger">Delete</a>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
